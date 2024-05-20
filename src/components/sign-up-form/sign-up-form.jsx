@@ -1,6 +1,7 @@
 import { useState } from "react";  
 
 import FormInput from "../form-input/form-input";
+import {signUpUser} from '../../utils/firebase/firebase.utils'
 
 import './sign-up-form.styles.scss'
 
@@ -14,19 +15,29 @@ const defaultFormFields = {
 const SignUpForm = () => {
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { displayName, email, password, confirmPassword } = formFields
+    const [accoutCreated, setAccountCreated] = useState(false)
     
-    const handleSubmit = (event) => {
+    const handleSubmit = async(event) => {
         event.preventDefault()
         if (password !== confirmPassword) {
             alert('Passwords do not match!')
             return
         }
-  
-        console.log('submitting form:', formFields)
-        handleReset()
+        const credentials = {
+            email,
+            password
+        }
+        try {
+            const user = await signUpUser(credentials)
+            handleReset()
+            setAccountCreated(true)
+            window.scrollTo(0,0);
+        } catch (error) {
+            alert(error)
+        }
     }
 
-    const handleReset = (event) => {
+    const handleReset = () => {
         setFormFields(defaultFormFields)
     }
 
@@ -41,8 +52,13 @@ const SignUpForm = () => {
     return (
         <>
             <div className="sign-up-container">
-                <h3>Don't have an account?</h3>
-                <span>Sign up with your email and password</span>
+                {
+                    accoutCreated ? (
+                        <h3>Account created successfully.</h3>
+                    ): (
+                        <h3>Don't have an account?</h3>
+                    )
+                }
                 
                 <form onSubmit={handleSubmit} onReset={handleReset}>
 

@@ -5,7 +5,8 @@ import {
     signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider,
-    signInWithEmailAndPassword 
+    signInWithEmailAndPassword,
+    createUserWithEmailAndPassword,
 } from 'firebase/auth';
 import {
     getFirestore,
@@ -35,10 +36,6 @@ provider.setCustomParameters({
 
 export const auth = getAuth();
 export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
-
-/**
- * db
- */
 export const db = getFirestore();
 export const createUserDocumentFromAuth = async (userAuth) => {
     const userDocRef = doc(db, 'users', userAuth.uid);
@@ -70,6 +67,17 @@ export const signInWithEmail = async(credentials) => {
       throw new Error(error.message)
     } else {
       throw new Error(JSON.stringify(error))
+    }
+  }
+}
+export const signUpUser = async (credentials) => {
+  try {
+    let userCredential = await createUserWithEmailAndPassword(auth, credentials.email, credentials.password)
+    let user = userCredential.user
+    return user
+  } catch (error) {
+    if (error instanceof FirebaseError) {
+      throw new Error(error.message)
     }
   }
 }

@@ -12,34 +12,29 @@
     .buttons-container {
       display: flex;
       justify-content: space-between;
-    }
 
-    .submit-button {
-      width: 170px;
-      margin: 5px 15px 5px 0;
-      padding: 10px 15px;
-      border: none;
-      
-      background-color: rgb(191, 239, 191);
-      color: gray;
-      font-size: 16px;
-      text-shadow: rgba(245,245,245,0.5) 3px 5px; 
-
-      cursor: pointer;
-    }
-
-    .clear-button {
-      width: 170px;
-      margin: 5px 15px 5px 0;
-      padding: 10px 15px;
-      border: none;
-      
-      background-color: antiquewhite;
-      color: gray;
-      font-size: 16px;
-      text-shadow: rgba(245,245,245,0.5) 3px 5px; 
-
-      cursor: pointer;
+      .signup-button {
+        width: 170px;
+        margin: 5px 15px 5px 0;
+        padding: 10px 15px;
+        border: none;
+  
+        color: gray;
+        font-size: 16px;
+        text-shadow: rgba(245,245,245,0.5) 3px 5px; 
+  
+        cursor: pointer;
+      }
+  
+      .submit-button {
+        @extend .signup-button;
+        background-color: rgb(191, 239, 191);
+      }
+  
+      .clear-button {
+        @extend .signup-button;
+        background-color: antiquewhite;
+      }
     }
 
 }
