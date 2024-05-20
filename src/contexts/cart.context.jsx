@@ -35,20 +35,24 @@ export const CartProvider = ({ children }) => {
         setCartCostTotal(costTotal + amount)
     }
 
+    /**
+        product:   {featured: false, price: 25, name: 'Brown Brim', id: 1, imageUrl: 'https://i...png' }
+        item:      {featured: false, price: 25, name: 'Brown Brim', id: 1, imageUrl: 'https://i...png',  qty:2 }
+     */
     const addItemToCart = (product) => {
         let item = getExisingItem(product.id, cartItems);
-        let updated = []
+        let updatedCart= []
                   
         if (item) {
-            updated = cartItems.map((el) => {
+            updatedCart= cartItems.map((el) => {
                 return el.id === item.id    ? 
                     { ...el, qty: ++el.qty } :
                     el
             })
         } else {
-            updated = [...cartItems, { ...product, qty: 1 }];
+            updatedCart= [...cartItems, { ...product, qty: 1 }];
         }
-        setCartItems(updated)
+        setCartItems(updatedCart)
         
         updateCartTotals(product.price, 1)
      }
