@@ -1,0 +1,41 @@
+$sub-color: grey;
+$main-color: black;
+
+.group {
+    position: relative;
+    margin: 45px 10px;
+
+    .form-input {
+        display: block;
+        width: 100%;
+        margin: 15px 0;
+        padding: 5px 5px 5px 5px;
+           
+        border: none;
+        border-radius: 0;
+        border-bottom: 1px solid $sub-color;
+    
+        background: none;
+        background-color: white;
+        font-size: 16px;
+        color: $sub-color; 
+
+        &:focus {
+            outline: solid limegreen;
+        }
+
+        .form-input-label {
+            position: absolute;
+            left: 5px;
+            top: 10px;
+
+            color: $sub-color;
+            font-size: 16px;
+            font-weight: normal;
+           
+            pointer-events: none;
+            transition: 300ms ease all;
+        }
+    }
+
+}

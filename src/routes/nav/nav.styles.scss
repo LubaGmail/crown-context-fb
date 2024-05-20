@@ -1,0 +1,55 @@
+// By using display flex in parent element, child elements automatically align like column or row with auto width and auto height.
+
+// justify-content: space-between - aligns flex items along the main axis of the current line of the flex container.
+// align-items — controls alignment of all items on the cross axis.
+
+.nav {
+  display: flex;
+  justify-content: space-between;
+
+  height: 70px;
+  width: 100%;
+  margin-bottom: 25px;
+
+  background-color: yellow;
+
+  .logo-container {
+    height: 100%;
+    width: 70px;
+    padding: 25px;
+
+    background-color: aquamarine;
+  }
+
+  .nav-links-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+    height: 100%;
+    width: 50%;
+    
+    background-color: aliceblue;
+
+    .nav-link {
+      padding: 10px 15px;
+      cursor: pointer;
+
+      background-color: pink;
+    }
+    .user-name {
+      padding: 10px 15px;
+      cursor: pointer;
+
+      background-color: white;
+    }
+
+    .tryit-link {
+      margin-right: 20px;
+      padding: 10px 15px;
+      cursor: pointer;
+      
+      background-color: rgb(192, 255, 215);
+    }
+  }
+}

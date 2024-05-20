@@ -1,0 +1,13 @@
+.auth-container {
+    display: flex;
+    width: 900px;
+    justify-content: space-between;
+    flex-direction: row;
+    margin: 30px auto;
+}
+
+@media (max-width: 800px) {
+    .auth-container {
+      flex-direction: column;
+    }
+}
