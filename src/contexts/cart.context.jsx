@@ -3,12 +3,15 @@ import { createContext, useState } from "react";
 export const CartContext = createContext({
     isCartOpen: false,
     setIsCartOpen: () => null,
+
     cartItems: [],
     setCartItems: (product) => null,
-    cartQtyTotal: 0,
+   
     addCheckoutQty: () => null,
     subtractCheckoutQty: () => null,
     removeCheckoutItem: () => null,
+
+    cartQtyTotal: 0,
     cartCostTotal: 0,
 })
 
@@ -71,7 +74,7 @@ export const CartProvider = ({ children }) => {
         })
         setCartItems(items)
        
-        updateCartTotals(checkoutItem.price * -1, -1) 
+        updateCartTotals(checkoutItem.price *(-1), -1) 
     }
 
     const removeCheckoutItem = (checkoutItem) => {
@@ -89,12 +92,15 @@ export const CartProvider = ({ children }) => {
     const value = {
         isCartOpen,
         setIsCartOpen,
+
         cartItems,
         addItemToCart,
-        cartQtyTotal,
+  
         addCheckoutQty,
         subtractCheckoutQty,
         removeCheckoutItem,
+
+        cartQtyTotal,
         cartCostTotal,
     }
  
