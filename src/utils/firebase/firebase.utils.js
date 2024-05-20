@@ -1,10 +1,11 @@
-import { initializeApp } from 'firebase/app';
+import { initializeApp,  FirebaseError, } from 'firebase/app';
 
 import {
     getAuth,
     signInWithRedirect,
     signInWithPopup,
     GoogleAuthProvider,
+    signInWithEmailAndPassword 
 } from 'firebase/auth';
 import {
     getFirestore,
@@ -61,6 +62,17 @@ export const createUserDocumentFromAuth = async (userAuth) => {
   
     return userDocRef;
 };
+export const signInWithEmail = async(credentials) => {
+  try {
+    return await signInWithEmailAndPassword(auth, credentials.email, credentials.password )
+  } catch (error) {
+    if (error instanceof FirebaseError) {
+      throw new Error(error.message)
+    } else {
+      throw new Error(JSON.stringify(error))
+    }
+  }
+}
 
 export const getCategories = async () => {
   const collectionRef = collection(db, 'categories');

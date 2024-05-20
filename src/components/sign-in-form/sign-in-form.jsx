@@ -1,7 +1,9 @@
 import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 import FormInput from "../form-input/form-input";
 import { UserContext } from '../../contexts/user.context';
+import { signInWithGooglePopup, signInWithEmail } from '../../utils/firebase/firebase.utils'
 
 import './sign-in-form.styles.scss'
 
@@ -14,22 +16,37 @@ const SignInForm = () => {
     const { setCurrentUser } = useContext(UserContext);
     const [formFields, setFormFields] = useState(defaultFormFields)
     const { email, password } = formFields
+
+    const navigate = useNavigate();
     
-    const handleSubmit = (event) => {
-        event.preventDefault()
- 
-        // set UserContext 
+    const handleSubmit = async(event) => {
+        event.preventDefault();
+        const credentials = {
+            email: email,
+            password: password
+        }
+
+        try {
+            let res = await signInWithEmail(credentials)
+            console.log('res', res)
+            setCurrentUser({
+                userName: res.user.email
+            })
+            navigate('/')
+        } catch (error) {
+            alert(error)
+        }
+    }
+    const handleGoogleSignIn = async() => {
+        handleReset();
+        const res = await signInWithGooglePopup();
         setCurrentUser({
-            userName: 'Perchik'
+            userName: res.user.displayName
         })
-
-        handleReset()
-    }
-    const handleGoogleSignIn = (event) => {
-        console.log('handleGoogleSignIn')
+        navigate('/')
     }
 
-    const handleReset = (event) => {
+    const handleReset = () => {
         setFormFields(defaultFormFields)
     }
 
