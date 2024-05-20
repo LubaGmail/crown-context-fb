@@ -1,7 +1,6 @@
 import './form-input.styles.scss'
 
 const FormInput = ({ label, ...otherProps }) => {
-
     // console.log(Object.keys(otherProps))
 
     return (

@@ -25,10 +25,8 @@ const SignInForm = () => {
             email: email,
             password: password
         }
-
         try {
             let res = await signInWithEmail(credentials)
-            console.log('res', res)
             setCurrentUser({
                 userName: res.user.email
             })
