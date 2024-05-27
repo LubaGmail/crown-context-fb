@@ -1,37 +1,56 @@
 import { createContext, useState, useEffect } from "react";
+import { gql, useQuery } from '@apollo/client';
 
 import SHOP_DATA from '../../src/shop-data.json'
-import { getCategories } from "../utils/firebase/firebase.utils";
 
 export const ProductContext = createContext({
     products: null,
-    setProducts: () => null,
     categoryMap: null,
 });
 
+const COLLECTIONS = gql`
+    query GetCollections {
+        collections {
+        id
+        title
+        items {
+            id
+            name
+            price
+            imageUrl
+        }
+    }
+}`;
+
 export const ProductProvider = ({ children }) => {
+    /**
+        collections: Array(5)
+                    0:  id: "cjwuuj5bz000i0719rrtw5gqk"
+                        title: "Hats"
+                        items: (9) [{…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}, {…}]
+                                    0: {__typename: 'Item', 
+                                        id: 'cjwuuj5ip000j0719taw0mjdz',
+                                        name: 'Brown Brim',
+                                        price: 25,
+                                        imageUrl: 'https://i.ibb..'
+                                    }
+                    1:  id: "cjwuun2fa001907195roo7iyk"
+                        title: ...
+     */
+         
+    const { loading, error, data } = useQuery(COLLECTIONS);
+
     const [products, setProducts] = useState([]);
     const [categoriesMap, setCategoryMap] = useState({})
-    const value = { products, setProducts, categoriesMap };
+    const value = { products, categoriesMap };
 
-    /**
-        (5) [{…}, {…}, {…}, {…}, {…}]
-            0:   {title: 'Hats', items: Array(9)}
-                                        0: {featured: false, name: 'Brown Brim', price: 25, id: 1, imageUrl: 'https:/...}
-     */
     useEffect(() => {
-        const getData = async () => {
-            let data = await getCategories()
-            setProducts(data)
+        if (data) {
+            const { collections } = data;
+            setProducts(collections)
         }
-        getData()
-    }, [])
+    }, [data])
 
-    /**
-       {hats: Array(9), jackets: Array(5), mens: Array(6), sneakers: Array(8), womens: Array(7)}
-        hats: 
-                0: {id: 1, imageUrl: 'https://i..png', featured: false, name: 'Brown Brim', price: 25}
-     */
     useEffect(() => {
         let map = products.reduce((acc, el, i) => {
             const { title, items } = el
