@@ -7,12 +7,11 @@ import CategoriesPreview from "../categories-preview/categories-preview";
 import Category from "../category/category";
 
 const Shop = () => {
-    let { categoriesMap } = useContext(ProductContext)
 
     return (
         <>
             <Routes>
-                <Route index element={<CategoriesPreview categoriesMap={categoriesMap} />} />
+                <Route index element={<CategoriesPreview />} />
                 <Route path=':category' element={<Category />} />
             </Routes>
 
