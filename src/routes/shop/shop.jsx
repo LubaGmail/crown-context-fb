@@ -1,7 +1,4 @@
-import { useContext, Fragment } from "react";
-import { Routes, Route, Link, Outlet, useParams  } from 'react-router-dom';
-
-import { ProductContext } from "../../contexts/shop.context";
+import { Routes, Route, } from 'react-router-dom';
 
 import CategoriesPreview from "../categories-preview/categories-preview";
 import Category from "../category/category";

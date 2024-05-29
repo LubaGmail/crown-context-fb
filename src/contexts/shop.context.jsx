@@ -53,7 +53,7 @@ export const ProductProvider = ({ children }) => {
     }, [data])
 
     useEffect(() => {
-        let map = products.reduce((acc, el, i) => {
+        let map = products.reduce((acc, el) => {
             const { title, items } = el
             const category = title.toLowerCase()
             acc[category] = items

@@ -1,11 +1,11 @@
 import { useContext, Fragment } from "react";
-import { Routes, Route, Link, Outlet, useParams } from 'react-router-dom';
+import { Link,} from 'react-router-dom';
 
 import ProductCard from "../../components/product-card/product-card"; 
 import Spinner from "../../components/spinner/spinner";
+import { ProductContext } from "../../contexts/shop.context";
 
 import './categories-preview.styles.scss'
-import { ProductContext } from "../../contexts/shop.context";
 
 const CategoriesPreview = () => {
     const {categoriesMap, loading} = useContext(ProductContext)
