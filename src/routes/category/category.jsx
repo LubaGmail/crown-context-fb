@@ -9,7 +9,7 @@ import './category.styles.scss'
 
 const Category = () => {
     const { category } = useParams();
-    let { categoriesMap, loading } = useContext(ProductContext)
+    const { categoriesMap, loading } = useContext(ProductContext)
     const [categoryProducts, setCategoryProducts] = useState([]);
 
     useEffect(() => {
