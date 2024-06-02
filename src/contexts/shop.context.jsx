@@ -6,7 +6,8 @@ import SHOP_DATA from '../../src/shop-data.json'
 export const ProductContext = createContext({
     products: null,
     categoryMap: null,
-    loading: false
+    loading: false,
+    error: null,
 });
 
 const COLLECTIONS = gql`
@@ -43,7 +44,7 @@ export const ProductProvider = ({ children }) => {
 
     const [products, setProducts] = useState([]);
     const [categoriesMap, setCategoryMap] = useState({})
-    const value = { products, categoriesMap, loading };
+    const value = { products, categoriesMap, loading, error };
 
     useEffect(() => {
         if (data) {

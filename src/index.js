@@ -14,8 +14,8 @@ import { ProductProvider } from './contexts/shop.context';
 import './index.scss';
 
 const client = new ApolloClient({
-  uri: 'https://crwn-clothing.com/',
-  cache: new InMemoryCache(),
+  uri: 'https://crwn-clothing.com/',   
+  cache: new InMemoryCache(),      // session memory
 });
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
