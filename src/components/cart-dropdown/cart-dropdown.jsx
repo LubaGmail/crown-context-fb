@@ -15,13 +15,13 @@ const CartDropdown = () => {
     //
     const goToCheckout = useCallback(() => {
         navigate('/checkout')
-    }, [navigate])
+    }, [navigate])          // navigate is not expected to change, so this [dependency] just follows syntax 
    
     return (
         <>
             <div className='cart-dropdown-container'>
                 {
-                    cartItems.length < 1 ? (
+                    cartItems.length < 1? (
                         <p style={{ textAlign: "center"}}>Your cart is empty.</p>
                     ) : (
                         <>

@@ -13,6 +13,7 @@ export const CartContext = createContext({
 
     cartQtyTotal: 0,
     cartCostTotal: 0,
+    clearCart: () => null
 })
 
 const getExisingItem = (id, cartItems) => {
@@ -34,7 +35,7 @@ export const CartProvider = ({ children }) => {
         let costTotal = cartCostTotal
         setCartCostTotal(costTotal + amount)
     }
-
+  
     /**
         product:   {featured: false, price: 25, name: 'Brown Brim', id: 1, imageUrl: 'https://i...png' }
         item:      {featured: false, price: 25, name: 'Brown Brim', id: 1, imageUrl: 'https://i...png',  qty:2 }
@@ -93,6 +94,13 @@ export const CartProvider = ({ children }) => {
         setCartCostTotal(costTotal - checkoutItem.price * checkoutItem.qty)
     }
 
+    const clearCart = () => {
+        setIsCartOpen(false)
+        setCartItems([])
+        setCartQtyTotal(0)
+        setCartQtyTotal(0)
+    }
+
     const value = {
         isCartOpen,
         setIsCartOpen,
@@ -106,6 +114,7 @@ export const CartProvider = ({ children }) => {
 
         cartQtyTotal,
         cartCostTotal,
+        clearCart
     }
  
     return (
