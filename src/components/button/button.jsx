@@ -5,12 +5,13 @@ export const BUTTON_TYPE_CLASSES = {
     checkout: "checkout",
 };
 
-const Button = ({ children, buttonType}) => {
-  
+const Button = ({ children, doSomething, buttonType}) => {
+
     return (
         <>
-            <button className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
-             >
+            <button onClick={doSomething}
+                className={`button-container ${BUTTON_TYPE_CLASSES[buttonType]}`}
+            >
                 {children}
             </button>
         </>
