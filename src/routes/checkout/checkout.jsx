@@ -2,7 +2,8 @@ import { useContext } from "react"
 
 import { CartContext } from "../../contexts/cart.context"
 import CheckoutItem from "../../components/checkout-item/checkout-item"
-
+import Button from "../../components/button/button"
+    
 import './checkout-styles.scss'
 
 const Checkout = () => {
@@ -39,7 +40,7 @@ const Checkout = () => {
                 </div>
 
                 <div className="total">
-                    <button onClick={clearCart}>Clear Cart</button>
+                    <Button doSomething={clearCart} buttonType='red'>Clear Cart</Button>
                 </div>
             </div>
         </>

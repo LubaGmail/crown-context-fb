@@ -1,18 +1,18 @@
 import { createContext, useState } from "react"; 
 
 export const CartContext = createContext({
-    isCartOpen: false,
-    setIsCartOpen: () => null,
+    isCartOpen: false,                          // useState
+    setIsCartOpen: () => null,                  // useState
 
-    cartItems: [],
-    setCartItems: (product) => null,
+    cartItems: [],                              // useState
+    setCartItems: (product) => null,            // useState
    
     addCheckoutQty: () => null,
     subtractCheckoutQty: () => null,
     removeCheckoutItem: () => null,
 
-    cartQtyTotal: 0,
-    cartCostTotal: 0,
+    cartQtyTotal: 0,                            // useState
+    cartCostTotal: 0,                           // useState
     clearCart: () => null
 })
 
@@ -23,6 +23,8 @@ const getExisingItem = (id, cartItems) => {
     return existingItem
 }
 
+// CartContext.Provider value={//...whatever is in CartContext}
+//
 export const CartProvider = ({ children }) => {
     const [isCartOpen, setIsCartOpen] = useState(false)
     const [cartItems, setCartItems] = useState([])
@@ -98,7 +100,7 @@ export const CartProvider = ({ children }) => {
         setIsCartOpen(false)
         setCartItems([])
         setCartQtyTotal(0)
-        setCartQtyTotal(0)
+        setCartCostTotal(0)
     }
 
     const value = {

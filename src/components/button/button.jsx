@@ -5,7 +5,8 @@ export const BUTTON_TYPE_CLASSES = {
     checkout: "checkout",
 };
 
-const Button = ({ children, doSomething, buttonType}) => {
+const Button = ({ children, doSomething, buttonType }) => {
+    console.log('buttonType', buttonType)
 
     return (
         <>
