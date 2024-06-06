@@ -5,11 +5,8 @@ Tuts:
 
 GraphQL vs Redux
     Both act as a single source of thruth
-    
-    pros: 
-        caching ( happens by the query, not by the data )
+
+    pros:   caching ( happens by the query, not by the data )
     
     cons:   GraphQL has to be supported from the back-end
-
-
 
