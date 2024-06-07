@@ -8,14 +8,15 @@ import CartItem from '../cart-item/cart-item';
 import './cart-dropdown.styles.scss';
 
 const CartDropdown = () => {
-    const { cartItems } = useContext(CartContext)
+    const { cartItems,  setIsCartOpen } = useContext(CartContext)
     const navigate = useNavigate()
 
     // useCallback memoize a function, not a return value of the function
     //
     const goToCheckout = useCallback(() => {
+        setIsCartOpen(false);
         navigate('/checkout')
-    }, [navigate])          // navigate is not expected to change, so this [dependency] just follows syntax 
+    }, [navigate, setIsCartOpen])          // navigate is not expected to change, so this [dependency] just follows syntax 
    
     return (
         <>

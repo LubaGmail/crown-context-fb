@@ -40,7 +40,9 @@ const Checkout = () => {
                 </div>
 
                 <div className="total">
-                    <Button doSomething={clearCart} buttonType='red'>Clear Cart</Button>
+                    <Button doSomething={clearCart}
+                        buttonType={cartItems.length === 0 ? "disabled" : "red"}
+                    >Clear Cart</Button>
                 </div>
             </div>
         </>
