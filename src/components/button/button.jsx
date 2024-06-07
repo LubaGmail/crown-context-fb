@@ -7,7 +7,6 @@ export const BUTTON_TYPE_CLASSES = {
 };
 
 const Button = ({ children, doSomething, buttonType }) => {
-    console.log('buttonType', buttonType)
 
     return (
         <>
