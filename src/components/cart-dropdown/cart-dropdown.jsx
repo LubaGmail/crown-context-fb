@@ -11,8 +11,12 @@ const CartDropdown = () => {
     const { cartItems,  setIsCartOpen } = useContext(CartContext)
     const navigate = useNavigate()
 
-    // useCallback memoize a function, not a return value of the function
-    //
+    /**
+        useCallback will return a memoized version of the callback that only changes if one of the inputs has changed.
+        useMemo memoizes the value inside useMemo hook
+            useCallback memoize the function itself while useMemo memoizes the return of the function.
+    */
+    
     const goToCheckout = useCallback(() => {
         setIsCartOpen(false);
         navigate('/checkout')
