@@ -1,5 +1,5 @@
 What's in it?
-    GraphQL, Firebase, optimization: useCallback, useMemo and memo, React Devtools.
+    GraphQL, Firebase, optimization, React Devtools.
 
 Tuts:
     https://crwn-clothing.com/
@@ -13,3 +13,9 @@ GraphQL vs Redux
     
     cons:   GraphQL has to be supported from the back-end
 
+Optimization 1:
+    useCallback, useMemo and memo
+
+Optimization 2:
+    Code splitting - split bundle.js into appropriate quantities.  If I am at the Landing page, give me only code the Landing page.
+        Is achieved via dynamic imports - lazy/Suspense/fallback.

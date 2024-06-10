@@ -3,8 +3,9 @@ import {memo} from 'react'
 import './cart-item.styles.scss'
 
 /**
-    Do not rerender unless the actual value changes
- */
+   React. memo() focuses on memoizing functional components to prevent unnecessary re-renders based on props, 
+   useMemo() hoookis used to memoize expensive computations within functional components.
+*/
 
 const CartItem = memo( ({ cartItem }) => {
     const { id, name, imageUrl, price, qty } = cartItem
